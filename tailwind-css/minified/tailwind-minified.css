@@ -10,6 +10,7 @@
     --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-amber-500: oklch(76.9% 0.188 70.08);
     --color-yellow-300: oklch(90.5% 0.182 98.111);
+    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --default-font-family: var(--font-sans);
@@ -165,23 +166,8 @@
   }
 }
 @layer utilities {
-  .container {
-    width: 100%;
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
+  .z-50 {
+    z-index: 50;
   }
   .flex {
     display: flex;
@@ -192,14 +178,14 @@
   .h-screen {
     height: 100vh;
   }
-  .min-h-screen {
-    min-height: 100vh;
-  }
   .w-\[20vw\] {
     width: 20vw;
   }
   .w-full {
     width: 100%;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .flex-col {
     flex-direction: column;
@@ -207,17 +193,40 @@
   .items-center {
     align-items: center;
   }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+  .gap-8 {
+    gap: calc(var(--spacing) * 8);
   }
   .overflow-y-hidden {
     overflow-y: hidden;
   }
-  .overflow-y-scroll {
-    overflow-y: scroll;
-  }
   .bg-yellow-300 {
     background-color: var(--color-yellow-300);
+  }
+  .text-\[1\.8rem\] {
+    font-size: 1.8rem;
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .hover\:scale-115 {
+    &:hover {
+      @media (hover: hover) {
+        --tw-scale-x: 115%;
+        --tw-scale-y: 115%;
+        --tw-scale-z: 115%;
+        scale: var(--tw-scale-x) var(--tw-scale-y);
+      }
+    }
   }
 }
 @layer components {
@@ -231,12 +240,17 @@
     --peca-atual-cor-dark: #c9a227;
     --bg-color: linear-gradient(to bottom, #8e93ed, #dbddff, #8e93ed);
     --bg-color-dark: linear-gradient(to bottom, #060726, #414237, #060726);
+    --control-panel-bg-light: #fff;
+    --control-panel-bg-dark: #000;
   }
   body {
     background-image: var(--bg-color);
   }
   body.dark {
     background-image: var(--bg-color-dark);
+  }
+  .main-container {
+    height: 90vh;
   }
   .terco {
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
@@ -299,6 +313,15 @@
     height: var(--conta-p-size);
     width: var(--conta-p-size);
     border-radius: calc(infinity * 1px);
+  }
+  .control-panel {
+    height: 10vh;
+    background-color: var(--control-panel-bg-light);
+    color: var(--color-black);
+  }
+  body.dark .control-panel {
+    background-color: var(--control-panel-bg-dark);
+    color: var(--color-white);
   }
 }
 @property --tw-rotate-x {

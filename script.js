@@ -14,6 +14,7 @@ function pecaSeguinte() {
     atualIndex++;
     pecasTerco[atualIndex].firstElementChild.classList.toggle('peca-atual');
   }
+  centralizarPecaAtual();
 }
 
 function pecaAnterior() {
@@ -22,6 +23,7 @@ function pecaAnterior() {
     atualIndex--;
     pecasTerco[atualIndex].firstElementChild.classList.toggle('peca-atual');
   }
+  centralizarPecaAtual();
 }
 
 function toggleDarkMode() {

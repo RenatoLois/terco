@@ -14,6 +14,9 @@
 
     --bg-color: linear-gradient(to bottom, #8e93ed, #dbddff, #8e93ed);
     --bg-color-dark: linear-gradient(to bottom, #060726, #414237, #060726);
+
+    --control-panel-bg-light: #fff;
+    --control-panel-bg-dark: #000;
   }
 
   body {
@@ -22,6 +25,10 @@
 
   body.dark {
     background-image: var(--bg-color-dark);
+  }
+
+  .main-container {
+    @apply h-[90vh];
   }
 
   .terco {
@@ -63,6 +70,15 @@
 
   .conta-p {
     @apply rounded-full h-(--conta-p-size) w-(--conta-p-size);
+
+  }
+
+  .control-panel {
+    height: 10vh;
+    @apply bg-(--control-panel-bg-light) text-black;
+  }
+
+  body.dark .control-panel {
+    @apply bg-(--control-panel-bg-dark) text-white;
   }
 }
-
