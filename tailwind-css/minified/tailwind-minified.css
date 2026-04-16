@@ -9,7 +9,6 @@
       "Courier New", monospace;
     --color-amber-300: oklch(87.9% 0.169 91.605);
     --color-amber-500: oklch(76.9% 0.188 70.08);
-    --color-yellow-300: oklch(90.5% 0.182 98.111);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -196,9 +195,6 @@
   .justify-center {
     justify-content: center;
   }
-  .gap-2 {
-    gap: calc(var(--spacing) * 2);
-  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
@@ -208,8 +204,8 @@
   .overflow-y-hidden {
     overflow-y: hidden;
   }
-  .bg-yellow-300 {
-    background-color: var(--color-yellow-300);
+  .pt-\[4vh\] {
+    padding-top: 4vh;
   }
   .text-\[1\.8rem\] {
     font-size: 1.8rem;
@@ -240,8 +236,10 @@
     --peca-atual-cor-dark: #c9a227;
     --bg-color: linear-gradient(to bottom, #8e93ed, #dbddff, #8e93ed);
     --bg-color-dark: linear-gradient(to bottom, #060726, #414237, #060726);
-    --control-panel-bg-light: #fff;
-    --control-panel-bg-dark: #000;
+    --bg-control-panel: #fff;
+    --bg-control-panel-dark: #000;
+    --bg-oracao: #eee;
+    --bg-oracao-dark: #222;
   }
   body {
     background-image: var(--bg-color);
@@ -250,7 +248,7 @@
     background-image: var(--bg-color-dark);
   }
   .main-container {
-    height: 90vh;
+    height: 86vh;
   }
   .terco {
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
@@ -291,10 +289,16 @@
     border-width: 4px;
     border-color: var(--color-white);
     background-color: var(--color-amber-500);
+    outline-width: 1px;
+    outline-style: var(--tw-outline-style);
+    outline-width: 2px;
+    outline-color: var(--color-black);
     background-color: var(--peca-atual-cor) !important;
   }
   body.dark .peca-atual {
     background-color: var(--peca-atual-cor) !important;
+    border-color: var(--color-black);
+    outline-color: var(--color-white);
   }
   .conta {
     width: fit-content;
@@ -315,13 +319,21 @@
     border-radius: calc(infinity * 1px);
   }
   .control-panel {
-    height: 10vh;
-    background-color: var(--control-panel-bg-light);
+    height: 8vh;
+    margin-top: 2vh;
+    background-color: var(--bg-control-panel);
     color: var(--color-black);
   }
   body.dark .control-panel {
-    background-color: var(--control-panel-bg-dark);
+    background-color: var(--bg-control-panel-dark);
     color: var(--color-white);
+  }
+  .oracao {
+    margin: 4rem;
+    background-color: var(--bg-oracao);
+  }
+  body.dark .oracao {
+    background-color: var(--bg-oracao-dark);
   }
 }
 @property --tw-rotate-x {
@@ -368,6 +380,11 @@
   inherits: false;
   initial-value: solid;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -381,6 +398,7 @@
       --tw-scale-y: 1;
       --tw-scale-z: 1;
       --tw-border-style: solid;
+      --tw-outline-style: solid;
     }
   }
 }

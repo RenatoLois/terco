@@ -15,8 +15,11 @@
     --bg-color: linear-gradient(to bottom, #8e93ed, #dbddff, #8e93ed);
     --bg-color-dark: linear-gradient(to bottom, #060726, #414237, #060726);
 
-    --control-panel-bg-light: #fff;
-    --control-panel-bg-dark: #000;
+    --bg-control-panel: #fff;
+    --bg-control-panel-dark: #000;
+
+    --bg-oracao: #eee;
+    --bg-oracao-dark: #222;
   }
 
   body {
@@ -28,7 +31,7 @@
   }
 
   .main-container {
-    @apply h-[90vh];
+    @apply h-[86vh];
   }
 
   .terco {
@@ -48,12 +51,13 @@
   }
 
   .peca-atual {
-    @apply bg-amber-500 border-4 border-white;
+    @apply bg-amber-500 border-4 border-white outline outline-2 outline-black; 
     background-color: var(--peca-atual-cor) !important;
   }
 
   body.dark .peca-atual {
     background-color: var(--peca-atual-cor) !important;
+    @apply border-black outline-white;
   }
 
   .conta {
@@ -74,11 +78,21 @@
   }
 
   .control-panel {
-    height: 10vh;
-    @apply bg-(--control-panel-bg-light) text-black;
+    height: 8vh;
+    margin-top: 2vh;
+    @apply bg-(--bg-control-panel) text-black;
   }
 
   body.dark .control-panel {
-    @apply bg-(--control-panel-bg-dark) text-white;
+    @apply bg-(--bg-control-panel-dark) text-white;
+  }
+
+  .oracao {
+    margin: 4rem;
+    background-color: var(--bg-oracao);
+  }
+
+  body.dark .oracao {
+    background-color: var(--bg-oracao-dark);
   }
 }
