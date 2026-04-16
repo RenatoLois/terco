@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer components {
+  :root {
+    --cruz-size: 58px;
+    --conta-g-size: 42px;
+    --conta-p-size: 28px;
+
+    --terco-cor: #5b2f1f;
+    --peca-atual-cor: #c9a227;
+
+    --terco-cor-dark: #a1cbff;
+    --peca-atual-cor-dark: #c9a227;
+
+    --bg-color: linear-gradient(to bottom, #8e93ed, #dbddff, #8e93ed);
+    --bg-color-dark: linear-gradient(to bottom, #060726, #414237, #060726);
+  }
+
+  body {
+    background-image: var(--bg-color);
+  }
+
+  body.dark {
+    background-image: var(--bg-color-dark);
+  }
+
+  .terco {
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    padding-top: calc(50vh - var(--cruz-size)/2);
+    padding-bottom: calc(50vh - var(--conta-g-size)/2);
+  }
+
+  .item {
+    @apply transform group-hover:scale-115 duration-300 group-hover:border-4 group-hover:border-amber-300;
+    background-color: var(--terco-cor) !important;
+  }
+
+  body.dark .item {
+    background-color: var(--terco-cor-dark) !important;
+  }
+
+  .peca-atual {
+    @apply bg-amber-500 border-4 border-white;
+    background-color: var(--peca-atual-cor) !important;
+  }
+
+  body.dark .peca-atual {
+    background-color: var(--peca-atual-cor) !important;
+  }
+
+  .conta {
+    @apply w-fit;
+  }
+
+  .cruz {
+    @apply rounded-full h-(--cruz-size) w-(--cruz-size);
+  }
+
+  .conta-g {
+    @apply rounded-full h-(--conta-g-size) w-(--conta-g-size);
+  }
+
+  .conta-p {
+    @apply rounded-full h-(--conta-p-size) w-(--conta-p-size);
+  }
+}
+
