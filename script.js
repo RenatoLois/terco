@@ -1,5 +1,7 @@
 const oracoes = {
-  "pai nosso": 
+  "pai nosso": {
+    titulo: "Pai Nosso",
+    conteudo:
 `Pai nosso que estais nos céus,
 santificado seja o vosso nome,
 venha a nós o vosso reino,
@@ -13,9 +15,11 @@ mas livrai-nos do mal.
 <Pois Vosso é o reino, o poder e a glória,
 agora e para sempre.>
 Amém.
-`,
+`},
 
-  "ave maria":
+  "ave maria": {
+    titulo: "Ave Maria",
+    conteudo:
 `
 Ave Maria, cheia de graça,
 o Senhor é convosco;
@@ -25,9 +29,11 @@ Santa Maria, mãe de Deus,
 rogai por nós pecadores,
 agora e na hora da nossa morte.
 Amém.
-`,
+`},
 
-  "credo":
+  "credo": {
+    titulo: "Credo",
+    conteudo:
 `
 Creio em Deus Pai todo-poderoso, 
 criador do céu e da terra;
@@ -48,12 +54,12 @@ na comunhão dos santos,
 na remissão dos pecados,
 na ressurreição da carne,
 na vida eterna.
-Amém.
-`,
+Amém.`},
 
-  "salve rainha":
-`
-Salve Rainha, Mãe de misericórdia,
+  "salva rainha": {
+    titulo: "Salve Rainha",
+    conteudo:
+`Salve Rainha, Mãe de misericórdia,
 vida, doçura, esperança nossa, salve.
 A vós bradamos os degradados filhos de Eva;
 a vós suspiramos,
@@ -66,25 +72,25 @@ bendito fruto de vosso ventre.
 ó doce e sempre Virgem Maria.
 Rogai por nós Santa Mãe de Deus para que
 sejamos dignos das promessas de Cristo.
-Amém.
-`,
+Amém.`},
 
-  "gloria ao pai":
-`
-Glória ao Pai, ao Filho e ao Espírito Santo.
+  "gloria ao pai":{ 
+    titulo: "Glória ao Pai",
+    conteudo:
+`Glória ao Pai, ao Filho e ao Espírito Santo.
 Como era no princípio, agora e sempre
 <e por todos os seculos dos seculos>.
-Amém.
-`,
+Amém.`},
 
-  "jaculatorio de fatima":
-`
-Ó meu Jesus, perdoai-nos,
+  "jaculatoria de fatima": { 
+    titulo: "Jaculatória de Fátima",
+    conteudo:
+`Ó meu Jesus, perdoai-nos,
 livrai-nos do fogo do inferno,
 levai as almas todas para o céu e
 socorrei principalmente as que mais precisarem.
 Amém.
-`,
+`},
 
   "misterios": {
     "gozosos": {
@@ -181,6 +187,36 @@ Amém.
 
 let pecasTerco = document.getElementById("terco-track").children;
 atualIndex = 0;
+let tipoMisterio = "gozosos";
+
+function escreverTextoPecaAtual() {
+  let numMisterio, pos;
+  let textos;
+  if(atualIndex <= 4) {
+    numMisterio = 0;
+    pos = atualIndex;
+    if(atualIndex == 0) textos = [{titulo: "credo"}];
+    else if(atualIndex == 1) textos = [{titulo: "pai nosso"}];
+    else if(atualIndex < 4) textos = [{titulo: "ave maria"}];
+    else if(atualIndex == 4) textos = [{titulo: "ave maria"}, {titulo: "gloria ao pai"}]
+  } else {
+    numMisterio = Math.floor( (atualIndex - 4) / 11) + 1;
+    pos = (atualIndex - 5) % 11;
+    if(pos == 0) textos = [{titulo: "misterio", tipo: tipoMisterio, numero: numMisterio}, {titulo: "pai nosso"}];
+    else if (pos < 10) textos = [{titulo: "ave maria"}];
+    else textos = [{titulo: "ave maria"}, {titulo: "gloria ao pai"}, {titulo: "jaculatoria de fatima"}];
+  }
+
+  textos.forEach(e => {
+    if(e.titulo == "misterio") {
+      console.log(oracoes.misterios[e.tipo][e.numero].titulo);
+      console.log(oracoes.misterios[e.tipo][e.numero].conteudo);
+    } else {
+      console.log(oracoes[e.titulo].titulo);
+      console.log(oracoes[e.titulo].conteudo);
+    }
+  });
+}
 
 function centralizarPecaAtual() {
   let terco = document.querySelector('.terco');
@@ -214,3 +250,9 @@ function toggleDarkMode() {
 function toggleDarkMode() {
   document.querySelector('body').classList.toggle('dark');
 }
+
+function main() {
+  centralizarPecaAtual();
+}
+
+main();
