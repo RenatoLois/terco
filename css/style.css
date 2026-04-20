@@ -2,32 +2,42 @@
 
 @layer components {
   :root {
-    --cruz-size: 58px;
+    --cruz-size: 78px;
+    /* serve para a medalha */
     --conta-g-size: 42px;
     --conta-p-size: 28px;
-
     --terco-cor: #5b2f1f;
     --peca-atual-cor: #c9a227;
-
     --terco-cor-dark: #a1cbff;
     --peca-atual-cor-dark: #c9a227;
-
+    --cruz-cor: #fff;
+    /* serve para a medalha */
+    --cruz-cor-dark: #000;
+    /* serve para a medalha */
     --bg-color: linear-gradient(to bottom, #8e93ed, #dbddff, #8e93ed);
     --bg-color-dark: linear-gradient(to bottom, #060726, #414237, #060726);
-
     --bg-control-panel: #fff;
     --bg-control-panel-dark: #000;
-
     --bg-oracao: #eee;
     --bg-oracao-dark: #222;
+    --text-color: #000;
+    --text-color-dark: #fff;
+  }
+
+  :root {
+    --cruz-stroke: #000;
+    /* serve para a medalha */
   }
 
   body {
     background-image: var(--bg-color);
+    color: var(--text-color);
   }
 
   body.dark {
+    --cruz-stroke: #fff;
     background-image: var(--bg-color-dark);
+    color: var(--text-color-dark);
   }
 
   .main-container {
@@ -51,7 +61,7 @@
   }
 
   .peca-atual {
-    @apply bg-amber-500 border-4 border-white outline outline-2 outline-black; 
+    @apply bg-amber-500 border-4 border-white outline-2 outline-black;
     background-color: var(--peca-atual-cor) !important;
   }
 
@@ -64,8 +74,19 @@
     @apply w-fit;
   }
 
-  .cruz {
-    @apply rounded-full h-(--cruz-size) w-(--cruz-size);
+  .cruz,
+  .medalha {
+    @apply h-(--cruz-size) w-(--cruz-size) flex justify-center items-center rounded-sm p-1;
+  }
+
+  .cruz svg,
+  .medalha svg {
+    @apply text-(--cruz-cor) h-full w-full;
+  }
+
+  body.dark .cruz svg,
+  body.dark .medalha svg {
+    @apply text-(--cruz-cor-dark);
   }
 
   .conta-g {
@@ -74,13 +95,10 @@
 
   .conta-p {
     @apply rounded-full h-(--conta-p-size) w-(--conta-p-size);
-
   }
 
   .control-panel {
-    height: 8vh;
-    margin-top: 2vh;
-    @apply bg-(--bg-control-panel) text-black;
+    @apply bg-(--bg-control-panel) text-black h-[8vh] mt-[2vh] z-150;
   }
 
   body.dark .control-panel {
@@ -88,11 +106,50 @@
   }
 
   .oracao {
-    margin: 4rem;
-    background-color: var(--bg-oracao);
+    @apply m-16 bg-(--bg-oracao);
   }
 
   body.dark .oracao {
-    background-color: var(--bg-oracao-dark);
+    @apply bg-(--bg-oracao-dark);
+  }
+
+  #topbar {
+    @apply grid grid-cols-[1fr_auto_1fr] items-center w-full;
+  }
+
+  #misterio-label {
+    @apply justify-self-start flex flex-col items-center justify-center text-center gap-1;
+  }
+
+  #misterio-titulo-label {
+    @apply justify-self-center text-center max-w-[90%] wrap-break-word;
+  }
+
+  #conta-label {
+    @apply justify-self-end flex flex-col items-center justify-center text-center gap-1;
+  }
+
+  #oracoes-container {
+    @apply relative flex-1 flex flex-col items-center overflow-y-scroll;
+  }
+
+  .oracao-block {
+    @apply p-4 w-[70%];
+  }
+
+  #oracoes-container>*:last-child {
+    margin-bottom: 50vh;
+  }
+
+  pre {
+    @apply whitespace-pre-wrap;
+  }
+
+  .oracao-block h2 {
+    @apply font-extrabold mb-[0.8rem];
+  }
+
+  .oracao-block pre {
+    @apply font-bold text-base/6;
   }
 }
