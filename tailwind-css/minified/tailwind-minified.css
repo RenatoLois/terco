@@ -174,14 +174,8 @@
   .relative {
     position: relative;
   }
-  .z-50 {
-    z-index: 50;
-  }
   .z-100 {
     z-index: 100;
-  }
-  .z-150 {
-    z-index: 150;
   }
   .flex {
     display: flex;
@@ -248,6 +242,9 @@
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
   }
+  .text-white {
+    color: var(--color-white);
+  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
@@ -263,11 +260,16 @@
     }
   }
 }
+@import url('https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Macondo+Swash+Caps&display=swap');
 @layer components {
   :root {
     --cruz-size: 78px;
+    --cruz-size-sm: 52px;
     --conta-g-size: 42px;
+    --conta-g-size-sm: 28px;
     --conta-p-size: 28px;
+    --conta-p-size-sm: 9px;
     --terco-cor: #5b2f1f;
     --peca-atual-cor: #c9a227;
     --terco-cor-dark: #a1cbff;
@@ -289,6 +291,7 @@
   body {
     background-image: var(--bg-color);
     color: var(--text-color);
+    font-family: "Macondo Swash Caps", cursive;
   }
   body.dark {
     --cruz-stroke: #fff;
@@ -444,6 +447,7 @@
     white-space: pre-wrap;
   }
   .oracao-block h2 {
+    font-family: "Inter", sans-serif;
     margin-bottom: 0.8rem;
     --tw-font-weight: var(--font-weight-extrabold);
     font-weight: var(--font-weight-extrabold);
@@ -453,6 +457,34 @@
     line-height: calc(var(--spacing) * 6);
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
+  }
+  @media (max-width:767px) {
+    .oracao-block {
+      padding: 0.5rem !important;
+    }
+    .oracao-block pre {
+      font-size: 1rem !important;
+    }
+    .oracao {
+      margin: 20px;
+    }
+    .terco {
+      width: 14vw !important;
+      padding-top: calc(50vh - var(--cruz-size-sm)/2) !important;
+      padding-bottom: calc(50vh - var(--conta-g-size-sm)/2) !important;
+    }
+    .cruz, .medalha {
+      height: var(--cruz-size-sm) !important;
+      width: var(--cruz-size-sm) !important;
+    }
+    .conta-g {
+      height: var(--conta-g-size-sm) !important;
+      width: var(--conta-g-size-sm) !important;
+    }
+    .conta-p {
+      height: var(--conta-p-size-sm) !important;
+      width: var(--conta-p-size-sm) !important;
+    }
   }
 }
 @property --tw-rotate-x {

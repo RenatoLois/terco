@@ -6,9 +6,12 @@
 @layer components {
   :root {
     --cruz-size: 78px;
+    --cruz-size-sm: 52px;
     /* serve para a medalha */
     --conta-g-size: 42px;
+    --conta-g-size-sm: 28px;
     --conta-p-size: 28px;
+    --conta-p-size-sm: 9px;
     --terco-cor: #5b2f1f;
     --peca-atual-cor: #c9a227;
     --terco-cor-dark: #a1cbff;
@@ -78,13 +81,11 @@
     @apply w-fit;
   }
 
-  .cruz,
-  .medalha {
+  .cruz, .medalha {
     @apply h-(--cruz-size) w-(--cruz-size) flex justify-center items-center rounded-sm p-1;
   }
 
-  .cruz svg,
-  .medalha svg {
+  .cruz svg, .medalha svg {
     @apply text-(--cruz-cor) h-full w-full;
   }
 
@@ -150,11 +151,46 @@
   }
 
   .oracao-block h2 {
-    @apply font-extrabold mb-[0.8rem];
     font-family: "Inter", sans-serif;
+    @apply font-extrabold mb-[0.8rem];
   }
 
   .oracao-block pre {
     @apply font-bold text-base/6;
+  }
+
+  @media (max-width:767px) {
+    .oracao-block {
+      padding: 0.5rem !important;
+    }
+
+    .oracao-block pre {
+      font-size: 1rem !important;
+    }
+
+    .oracao {
+      margin: 20px;
+    }
+
+    .terco {
+      width: 14vw !important;
+      padding-top: calc(50vh - var(--cruz-size-sm)/2) !important;
+      padding-bottom: calc(50vh - var(--conta-g-size-sm)/2) !important;
+    }   
+
+    .cruz, .medalha {
+      height: var(--cruz-size-sm) !important;
+      width: var(--cruz-size-sm) !important;
+    }
+
+    .conta-g {
+      height: var(--conta-g-size-sm) !important;
+      width: var(--conta-g-size-sm) !important;
+    }
+
+    .conta-p {
+      height: var(--conta-p-size-sm) !important;
+      width: var(--conta-p-size-sm) !important;
+    }
   }
 }

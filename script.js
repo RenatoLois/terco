@@ -10,6 +10,11 @@ const textos_lang = {
     },
 
     oracoes: {
+      "oferecimento": {
+        titulo: "Oferecimento",
+        conteudo: "[Faça o sinal da cruz,]"
+      },
+
       "pai nosso": {
         titulo: "Pai Nosso",
         conteudo:
@@ -195,6 +200,7 @@ Amém.
 
 
 let misterioLabel = document.getElementById("misterio-label");
+let misterioNome = document.getElementById("misterio-nome");
 let misterioTituloLabel = document.getElementById("misterio-titulo-label");
 let contaLabel = document.getElementById("conta-label");
 let oracoesContainer = document.getElementById("oracoes-container");
@@ -203,6 +209,12 @@ let pecasTerco = document.getElementById("terco-track").children;
 atualIndex = 0;
 let tipoMisterio = "gozosos";
 let lang = "pt";
+
+function trocarMisterio(nomeMisterio) {
+  tipoMisterio = nomeMisterio;
+  misterioNome.textContent = "Mistério " + nomeMisterio;
+  escreverTextoPecaAtual();
+}
 
 function escreverTextoPecaAtual() {
   let numMisterio, pos;
@@ -266,19 +278,24 @@ function escreverTextoPecaAtual() {
   else if (atualIndex == 5) contaLabel.innerHTML = textos_lang[lang].termos["conta grande"];
   else if (pos <= 10 && pos != 0) contaLabel.innerHTML = textos_lang[lang].termos["conta pequena"] + " " + (pos);
   else contaLabel.innerHTML = textos_lang[lang].termos["conta grande"];
-  
-  /*
-  let fadeBottomDiv = document.createElement("div");
-  fadeBottomDiv.id = "fade-bottom";
-  oracoesContainer.appendChild(fadeBottomDiv);
-  */
 }
 
 function centralizarPecaAtual() {
   let terco = document.querySelector('.terco');
   let pecaAtual = terco.firstElementChild.children[atualIndex].firstChild;
-  terco.scrollTo({
-    top: pecaAtual.offsetTop - terco.clientHeight/2 + pecaAtual.offsetHeight, behavior: "smooth"});
+
+  const isMobile = window.innerWidth <= 767;
+  if (isMobile) {
+    terco.scrollTo({
+      left: pecaAtual.offsetLeft - terco.clientWidth / 2 + pecaAtual.offsetWidth / 2,
+      behavior: "smooth"
+    });
+  } else {
+    terco.scrollTo({
+      top: pecaAtual.offsetTop - terco.clientHeight / 2 + pecaAtual.offsetHeight / 2,
+      behavior: "smooth"
+    });
+  }
 
   escreverTextoPecaAtual();
 }
@@ -305,14 +322,9 @@ function toggleDarkMode() {
   document.body.classList.toggle('dark');
 }
 
-function toggleDarkMode() {
-  document.querySelector('body').classList.toggle('dark');
-}
-
 function main() {
   centralizarPecaAtual();
+  trocarMisterio('gozosos');
 }
 
 main();
-
-
