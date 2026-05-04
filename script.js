@@ -10,10 +10,32 @@ const textos_lang = {
     },
 
     oracoes: {
-      "oferecimento": {
-        titulo: "Oferecimento",
-        conteudo: "[Faça o sinal da cruz,]"
-      },
+      "avisos": {
+        titulo: "Avisos",
+        conteudo: 
+`Conteúdos opcionais possuem aviso e/ou a indicação por meio dos símbolos "< >".
+Sempre verifique se há mais texto ou conteudo não visível, arrastando para cima na tela.`},
+
+      "sinal da cruz": {
+        titulo: "Sinal da Cruz",
+        conteudo: 
+`Antes de iniciar o terço, faça o Sinal da Cruz, traçando uma cruz sobre si mesmo (da testa ao peito e de um ombro ao outro), enquanto reza:
+"Em nome do Pai, do Filho e do Espírito Santo. Amém."`},
+
+      "oferecimento do terco": {
+        titulo: "Oferta do terço (opcional)",
+        conteudo: 
+`Você pode oferecer o terço a Deus, apresentando suas intenções.
+Se desejar, reze:
+“Divino Jesus,
+nós Vos oferecemos este terço que vamos rezar,
+meditando nos mistérios da Vossa Redenção.
+Concedei-nos, por intercessão da Virgem Maria,
+Mãe de Deus e nossa Mãe,
+as virtudes que nos são necessárias para bem rezá-lo
+e a graça de ganharmos as indulgências
+desta santa devoção.”
+Ou faça sua própria intenção, com suas palavras.`},
 
       "pai nosso": {
         titulo: "Pai Nosso",
@@ -21,7 +43,7 @@ const textos_lang = {
 `Pai nosso que estais nos céus,
 santificado seja o vosso nome,
 venha a nós o vosso reino,
-seja feita a tua vontade,
+seja feita a vossa vontade,
 assim na terra como no céu.
 O pão nosso de cada dia nos dai hoje,
 perdoai-nos as nossas ofensas,
@@ -95,7 +117,7 @@ Como era no princípio, agora e sempre
 Amém.`},
 
       "jaculatoria de fatima": { 
-        titulo: "Jaculatória de Fátima",
+        titulo: "Jaculatória de Fátima (opcional)",
         conteudo:
 `Ó meu Jesus, perdoai-nos,
 livrai-nos do fogo do inferno,
@@ -204,6 +226,9 @@ let misterioNome = document.getElementById("misterio-nome");
 let misterioTituloLabel = document.getElementById("misterio-titulo-label");
 let contaLabel = document.getElementById("conta-label");
 let oracoesContainer = document.getElementById("oracoes-container");
+let pauseButton = document.getElementById("play-pause");
+let pauseIcon = document.getElementById("pause-icon");
+let music = new Audio('res/Schubert - Ave Maria.mp3');
 
 let pecasTerco = document.getElementById("terco-track").children;
 atualIndex = 0;
@@ -222,7 +247,7 @@ function escreverTextoPecaAtual() {
   if(atualIndex <= 4) {
     numMisterio = 0;
     pos = atualIndex;
-    if(atualIndex == 0) textos = [{titulo: "credo"}];
+    if(atualIndex == 0) textos = [{titulo: "avisos"}, {titulo: "sinal da cruz"}, {titulo: "oferecimento do terco"}, {titulo: "credo"}];
     else if(atualIndex == 1) textos = [{titulo: "pai nosso"}];
     else if(atualIndex < 4) textos = [{titulo: "ave maria"}];
     else if(atualIndex == 4) textos = [{titulo: "ave maria"}, {titulo: "gloria ao pai"}]
@@ -261,6 +286,11 @@ function escreverTextoPecaAtual() {
     document.getElementById("oracoes-container").scrollTop = 0;
   });
 
+  oracoesContainer.classList.add('fade-in');
+  setTimeout(() => {
+    oracoesContainer.classList.remove('fade-in');
+  }, 300);
+
   // misterioLabel
   if(numMisterio == 0 || atualIndex == pecasTerco.length - 1) {
     misterioLabel.innerHTML = "";
@@ -278,24 +308,19 @@ function escreverTextoPecaAtual() {
   else if (atualIndex == 5) contaLabel.innerHTML = textos_lang[lang].termos["conta grande"];
   else if (pos <= 10 && pos != 0) contaLabel.innerHTML = textos_lang[lang].termos["conta pequena"] + " " + (pos);
   else contaLabel.innerHTML = textos_lang[lang].termos["conta grande"];
+  
+  /*
+  let fadeBottomDiv = document.createElement("div");
+  fadeBottomDiv.id = "fade-bottom";
+  oracoesContainer.appendChild(fadeBottomDiv);
+  */
 }
 
 function centralizarPecaAtual() {
   let terco = document.querySelector('.terco');
   let pecaAtual = terco.firstElementChild.children[atualIndex].firstChild;
-
-  const isMobile = window.innerWidth <= 767;
-  if (isMobile) {
-    terco.scrollTo({
-      left: pecaAtual.offsetLeft - terco.clientWidth / 2 + pecaAtual.offsetWidth / 2,
-      behavior: "smooth"
-    });
-  } else {
-    terco.scrollTo({
-      top: pecaAtual.offsetTop - terco.clientHeight / 2 + pecaAtual.offsetHeight / 2,
-      behavior: "smooth"
-    });
-  }
+  terco.scrollTo({
+    top: pecaAtual.offsetTop - terco.clientHeight/2 + pecaAtual.offsetHeight, behavior: "smooth"});
 
   escreverTextoPecaAtual();
 }
@@ -322,7 +347,22 @@ function toggleDarkMode() {
   document.body.classList.toggle('dark');
 }
 
+function toggleDarkMode() {
+  document.querySelector('body').classList.toggle('dark');
+}
+
+function pauseToggle() {
+  if (music.paused) {
+    music.play();
+    pauseIcon.classList.replace('fa-play', 'fa-pause');
+  } else {
+    music.pause();
+    pauseIcon.classList.replace('fa-pause', 'fa-play');
+  }
+}
+
 function main() {
+  music.loop = true;
   centralizarPecaAtual();
   trocarMisterio('gozosos');
 }

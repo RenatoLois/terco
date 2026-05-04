@@ -11,7 +11,7 @@
     <style>
     </style>
   </head>
-  <body class="flex flex-col dark pt-[4vh] w-full h-screen">
+  <body class="flex flex-col dark pt-[4vh] w-full h-screen min-w-[400px]">
     <div class="main-container flex items-center relative">
       <div class="terco overflow-y-hidden h-screen w-[20vw] z-100">  <!-- terço -->
         <div class="flex flex-col gap-4 items-center w-full" id="terco-track">  <!-- track -->
@@ -107,17 +107,13 @@
         -->
       </div>
     </div>
-    <div class="control-panel flex justify-center items-center gap-8">
-      <button type="button">
-        <i class="fa-solid fa-bars transform hover:scale-115 duration-300 text-[1.8rem]"></i>
-      </button>
-
+    <div class="control-panel flex items-center gap-8 overflow-x-scroll max-w-full px-4 py-2 flex-nowrap justify-start md:justify-center">
       <div class="flex justify-center items-center gap-4">
         <button type="button" onclick="pecaAnterior();">
           <i class="fa-solid fa-backward-step transform hover:scale-115 duration-300 text-[1.8rem]"></i>
         </button>
-        <button type="button" id="playPause">
-          <i class="fa-solid fa-play transform hover:scale-115 duration-300 text-[1.8rem]"></i>
+        <button type="button" id="play-pause">
+          <i id="pause-icon" class="fa-solid fa-play transform hover:scale-115 duration-300 text-[1.8rem]" onclick="pauseToggle()"></i>
         </button>
         <button type="button" onclick="pecaSeguinte();">
           <i class="fa-solid fa-forward-step transform hover:scale-115 duration-300 text-[1.8rem]"></i>
@@ -132,16 +128,16 @@
         <i class="fa-solid fa-face-smile transform hover:scale-115 duration-300 text-[1.8rem]"></i>
       </button>
 
+      <button type="button" onclick="trocarMisterio('luminosos');">
+        <i class="fa-solid fa-sun transform hover:scale-115 duration-300 text-[1.8rem]"></i>
+      </button>
+
       <button type="button" onclick="trocarMisterio('dolorosos');">
         <i class="fa-solid fa-heart-crack transform hover:scale-115 duration-300 text-[1.8rem]"></i>
       </button>
 
       <button type="button" onclick="trocarMisterio('gloriosos');">
         <i class="fa-solid fa-crown transform hover:scale-115 duration-300 text-[1.8rem]"></i>
-      </button>
-
-      <button type="button" onclick="trocarMisterio('luminosos');">
-        <i class="fa-solid fa-sun transform hover:scale-115 duration-300 text-[1.8rem]"></i>
       </button>
 
 

@@ -159,6 +159,15 @@
     @apply font-bold text-base/6;
   }
 
+  @keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(4px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  #oracoes-container.fade-in {
+    animation: fadeInText 0.3s ease-out;
+  }
+
   @media (max-width:767px) {
     .oracao-block {
       padding: 0.5rem !important;

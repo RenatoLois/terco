@@ -1,0 +1,6 @@
+adicionar os creditos no site.
+corrigir o media query para mobile
+mudar icone de passar de conta para outra seta (ta parecendo midia)
+mudar icone de pause/despause para som/sem som
+adicionar nome ou indicacao para os misterios
+adicionar mais musicas e opcao de trocar a musica

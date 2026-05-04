@@ -192,6 +192,12 @@
   .w-full {
     width: 100%;
   }
+  .max-w-full {
+    max-width: 100%;
+  }
+  .min-w-\[400px\] {
+    min-width: 400px;
+  }
   .flex-1 {
     flex: 1;
   }
@@ -204,6 +210,9 @@
   .flex-col {
     flex-direction: column;
   }
+  .flex-nowrap {
+    flex-wrap: nowrap;
+  }
   .items-center {
     align-items: center;
   }
@@ -213,17 +222,29 @@
   .justify-center {
     justify-content: center;
   }
+  .justify-start {
+    justify-content: flex-start;
+  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
   }
+  .overflow-x-scroll {
+    overflow-x: scroll;
+  }
   .overflow-y-hidden {
     overflow-y: hidden;
   }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
   .px-12 {
     padding-inline: calc(var(--spacing) * 12);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -257,6 +278,11 @@
         --tw-scale-z: 115%;
         scale: var(--tw-scale-x) var(--tw-scale-y);
       }
+    }
+  }
+  .md\:justify-center {
+    @media (width >= 48rem) {
+      justify-content: center;
     }
   }
 }
@@ -457,6 +483,19 @@
     line-height: calc(var(--spacing) * 6);
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
+  }
+  @keyframes fadeInText {
+    0% {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  #oracoes-container.fade-in {
+    animation: fadeInText 0.3s ease-out;
   }
   @media (max-width:767px) {
     .oracao-block {
