@@ -113,7 +113,7 @@ Amém.`},
         conteudo:
 `Glória ao Pai, ao Filho e ao Espírito Santo.
 Como era no princípio, agora e sempre
-<e por todos os seculos dos seculos>.
+<e por todos os séculos dos séculos>.
 Amém.`},
 
       "jaculatoria de fatima": { 
