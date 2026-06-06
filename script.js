@@ -354,10 +354,10 @@ function toggleDarkMode() {
 function pauseToggle() {
   if (music.paused) {
     music.play();
-    pauseIcon.classList.replace('fa-play', 'fa-pause');
+    pauseIcon.classList.replace('fa-music', 'fa-volume-xmark');
   } else {
     music.pause();
-    pauseIcon.classList.replace('fa-pause', 'fa-play');
+    pauseIcon.classList.replace('fa-volume-xmark', 'fa-music');
   }
 }
 
