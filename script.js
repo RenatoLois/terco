@@ -13,8 +13,29 @@ const textos_lang = {
       "avisos": {
         titulo: "Avisos",
         conteudo: 
-`Conteúdos opcionais possuem aviso e/ou a indicação por meio dos símbolos "< >".
-Sempre verifique se há mais texto ou conteudo não visível, arrastando para cima na tela.`},
+`  Conteúdos opcionais possuem aviso e/ou a indicação por meio dos símbolos "< >".
+Sempre verifique se há mais texto ou conteúdo não visível, arrastando para cima na tela.
+Você pode iniciar a canção "Ave Maria" apertando o ícone de música na barra inferior do site.
+  É possível trocar o mistério clicando em algum dos ícones da barra inferior. Use os ícones de seta para passar para a proxima conta do terço.
+  Atenção, em celulares ou dispositivos de menor largura, a barra inferior pode não ser completamente visível.
+  Se for o caso, arraste a barra inferior para a direita, verifique se o site nao está ampliado ou com zoom caso a barra não apareça.
+  Qualquer dúvida ou sugestão entre em contato. Ao terminar o terço, deixei os créditos e as fontes daonde obti algum conteúdo.`},
+      "referencias": {
+        titulo: "Referências",
+        conteudo:
+`Texto dos Mistérios obtidos de: The Hole See (www.vatican.va)
+
+https://www.vatican.va/special/rosary/documents/misteri_gloriosi_po.html
+https://www.vatican.va/special/rosary/documents/misteri_dolorosi_po.html
+https://www.vatican.va/special/rosary/documents/misteri_gaudiosi_po.html
+https://www.vatican.va/special/rosary/documents/misteri_luminosi_po.html
+
+textos obtidos (ou instruidos) também de:
+https://salvaimerainha.org.br/como-oferecer-o-terco/
+https://santuario.cancaonova.com/sem-categoria/santo-terco/
+
+música "Ave Maria" de:
+https://www.youtube.com/watch?v=2H5rusicEnc`},
 
       "sinal da cruz": {
         titulo: "Sinal da Cruz",
@@ -254,7 +275,7 @@ function escreverTextoPecaAtual() {
   } else {
     numMisterio = Math.floor( (atualIndex - 5) / 11) + 1;
     pos = (atualIndex - 5) % 11;
-    if (atualIndex == pecasTerco.length - 1) textos = [{titulo: "salve rainha"}];
+    if (atualIndex == pecasTerco.length - 1) textos = [{titulo: "salve rainha"}, {titulo: "referencias"}];
     else if(pos == 0) textos = [{titulo: "misterio", tipo: tipoMisterio, numero: numMisterio}, {titulo: "pai nosso"}];
     else if (pos < 10) textos = [{titulo: "ave maria"}];
     else textos = [{titulo: "ave maria"}, {titulo: "gloria ao pai"}, {titulo: "jaculatoria de fatima"}];
