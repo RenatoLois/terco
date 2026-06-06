@@ -18,7 +18,8 @@ Sempre verifique se há mais texto ou conteúdo não visível, arrastando para c
 Você pode iniciar a canção "Ave Maria" apertando o ícone de música na barra inferior do site.
   É possível trocar o mistério clicando em algum dos ícones da barra inferior. Use os ícones de seta para passar para a proxima conta do terço.
   Atenção, em celulares ou dispositivos de menor largura, a barra inferior pode não ser completamente visível.
-  Se for o caso, arraste a barra inferior para a direita, verifique se o site nao está ampliado ou com zoom caso a barra não apareça.
+  Se for o caso, arraste a barra inferior para a direita, verifique se o site nao está ampliado ou com zoom caso a barra não apareça. Arraste para cima também se não for o suficiente, pode ser que em celulares, as vezes ela fica oculta embaixo do limite.
+  Peço perdão, pois não resolvi ainda esse problema, pretendo resolver em breve.
   Qualquer dúvida ou sugestão entre em contato. Ao terminar o terço, deixei os créditos e as fontes daonde obti algum conteúdo.`},
       "referencias": {
         titulo: "Referências",
